@@ -37,6 +37,7 @@ class CfgVehicles
 		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";										// Chemin vers modele 3D - Backslash important
 		weight = 100;																		// Poids de l'item - joues potentiellement sur le comportement de la physique de l'item si il est lancé
 		descriptionShort = "Small medical box (Base)";										// Desc de l'item affiché en jeu - stringtable preferable
+		varQuantityMax = 5;
 		itemSize[] = {2,2};																	// Taille de l'item dans l'inventaire - largeur par longueur
         hiddenSelections[] = {"texture"};													// Nom de la selection à utiliser dans le modele pour permettre le retexturing
         hiddenSelectionsTextures[] = {"Medkit_AI2\data\main_base_co.paa"};					// Chemin vers les textures - utilisé pour permettre le retexturing - là par contre Backslash pas ouf

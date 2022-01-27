@@ -2,7 +2,7 @@ class ActionHealingTargetCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
-		m_ActionData.m_ActionComponent = new CAContinuousTime(7.5f); // Set the time off the use
+		m_ActionData.m_ActionComponent = new CAContinuousTime(7.5); // Set the time off the use
 	}
 };
 
@@ -12,7 +12,7 @@ class ActionHealingTarget: ActionHealingBase
 	{
 		m_CallbackClass = ActionHealingTargetCB;
 		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
-		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_INJECTION;
+		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_BANDAGETARGET;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
 	}

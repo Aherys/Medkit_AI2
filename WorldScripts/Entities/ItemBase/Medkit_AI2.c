@@ -1,9 +1,9 @@
 class Medkit_AI2 extends BandageDressing
 {
-	
 	//================================================================
 	// IGNITION ACTION
 	//================================================================
+
 	override bool HasFlammableMaterial()
 	{
 		return true;

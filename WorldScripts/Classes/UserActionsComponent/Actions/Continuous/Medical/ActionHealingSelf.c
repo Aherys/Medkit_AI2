@@ -2,7 +2,7 @@ class ActionHealingSelfCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
-		m_ActionData.m_ActionComponent = new CAContinuousTime(7.5f); // Set the time off the use
+		m_ActionData.m_ActionComponent = new CAContinuousTime(7.5); // Set the time off the use
 	}
 };
 
@@ -11,7 +11,7 @@ class ActionHealingSelf: ActionHealingBase
 	void ActionHealingSelf()
 	{
 		m_CallbackClass = ActionHealingSelfCB;
-		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_INJECTION;
+		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_BANDAGE;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
 		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
