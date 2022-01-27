@@ -5,7 +5,7 @@ class CfgPatches
 		units[] = {};																		// OSEF - pour les characters
 		weapons[] = {};																		// OSEF
 		requiredVersion = 0.1;																// Version du jeu - OSEF - meme BI OSEF
-		requiredAddons[] = {"DZ_Data","DZ_Gear_Containers"};  									// Addon requis pour faire fonctionner l'item. Si classe externe utilisée, obligatoire sinon kaboom
+		requiredAddons[] = {"DZ_Data","DZ_Gear_Medical"};  									// Addon requis pour faire fonctionner l'item. Si classe externe utilisée, obligatoire sinon kaboom
 	};
 };
 
@@ -28,9 +28,9 @@ class CfgMods
 
 class CfgVehicles 
 {
-	class AmmoBox; 																	// Classe externe issue de gear_medical\DZ\gear\medical\config.cpp
+	class BandageDressing; 																	// Classe externe issue de gear_medical\DZ\gear\medical\config.cpp
 
-	class Medkit_AI2: AmmoBox 											// Classe de base de ton item - herite de la classe externe BandageDressing parce qu'on va pas tout redefinir. flemme.
+	class Medkit_AI2: BandageDressing 											// Classe de base de ton item - herite de la classe externe BandageDressing parce qu'on va pas tout redefinir. flemme.
 	{
 		scope = 0; 																			// Utilisé par l'editeur - 0=hidden; 1=Zeus; 2=Editor - zeus existe pas dans DayZ, useless.
 		displayName = "Medkit AI-2 (Base)";													// Nom affiché en jeu - stringtable preferable
