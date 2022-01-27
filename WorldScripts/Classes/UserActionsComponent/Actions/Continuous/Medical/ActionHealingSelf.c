@@ -11,7 +11,7 @@ class ActionHealingSelf: ActionHealingBase
 	void ActionHealingSelf()
 	{
 		m_CallbackClass = ActionHealingSelfCB;
-		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_BANDAGE;
+		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_SALINEBLOODBAG;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_CROUCH;
 		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;

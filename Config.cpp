@@ -21,10 +21,10 @@ class CfgMods
    {
     value = "";
     files[] = {"Medkit_AI2/WorldScripts"};
-   }
-  }
- }
-}
+   };
+  };
+ };
+};
 
 class CfgVehicles 
 {

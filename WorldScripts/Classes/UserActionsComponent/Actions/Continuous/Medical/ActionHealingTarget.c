@@ -12,7 +12,7 @@ class ActionHealingTarget: ActionHealingBase
 	{
 		m_CallbackClass = ActionHealingTargetCB;
 		m_SpecialtyWeight = UASoftSkillsWeight.PRECISE_LOW;
-		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_BANDAGETARGET;
+		m_CommandUID = DayZPlayerConstants.CMD_ACTIONFB_SALINEBLOODBAGTARGET;
 		m_FullBody = true;
 		m_StanceMask = DayZPlayerConstants.STANCEMASK_ERECT | DayZPlayerConstants.STANCEMASK_CROUCH;
 	}
