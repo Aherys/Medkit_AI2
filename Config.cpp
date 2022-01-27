@@ -39,16 +39,44 @@ class CfgVehicles
 		descriptionShort = "Small medical box (Base)";										// Desc de l'item affiché en jeu - stringtable preferable
 		varQuantityMax = 5;
 		itemSize[] = {2,2};																	// Taille de l'item dans l'inventaire - largeur par longueur
-        hiddenSelections[] = {"texture"};													// Nom de la selection à utiliser dans le modele pour permettre le retexturing
-        hiddenSelectionsTextures[] = {"Medkit_AI2\data\main_base_co.paa"};					// Chemin vers les textures - utilisé pour permettre le retexturing - là par contre Backslash pas ouf
+        hiddenSelections[] = {"color"};													// Nom de la selection à utiliser dans le modele pour permettre le retexturing
+        hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Yellow_co.paa"};					// Chemin vers les colors - utilisé pour permettre le retexturing - là par contre Backslash pas ouf
 	};
 
 	class Medkit_AI2_Blue: Medkit_AI2	 									// Classe qu'on va vraiment utiliser du coup. Va etre affiché en jeu - hérite de la Base
 	{
 		scope = 2;
 		displayName = "Medkit AI-2 (Blue)";
+		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";
 		descriptionShort = "Small medical box (Blue)";
-        hiddenSelections[] = {"texture"};
-        hiddenSelectionsTextures[] = {"Medkit_AI2\data\main_blue_co.paa"};
+        hiddenSelections[] = {"color"};
+        hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Blue_co.paa"};
+	};
+	class Medkit_AI2_Yellow: Medkit_AI2
+	{
+		scope = 2;
+		displayName = "Medkit AI-2 (Yellow)";
+		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";
+		descriptionShort = "Small medical box (Yellow)";
+        hiddenSelections[] = {"color"};
+        hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Yellow_co.paa"};
+	};
+	class Medkit_AI2_Green: Medkit_AI2
+	{
+		scope = 2;
+		displayName = "Medkit AI-2 (Green)";
+		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";
+		descriptionShort = "Small medical box (Green)";
+        hiddenSelections[] = {"color"};
+        hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Green_co.paa"};
+	};
+	class Medkit_AI2_Red: Medkit_AI2
+	{
+		scope = 2;
+		displayName = "Medkit AI-2 (Red)";
+		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";
+		descriptionShort = "Small medical box (Red)";
+        hiddenSelections[] = {"color"};
+        hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Red_co.paa"};
 	};
 };
