@@ -28,7 +28,8 @@ class ActionHealingBase: ActionContinuousBase
 	{	
 
 		player.AddHealth("","", player.GetMaxHealth() * 0.15);
-		player.AddHealth("","Shock",-15);
+		player.GetStatDrug().Set(player.GetStatDrug().Get() + 30);
+		player.GetModifiersManager().ActivateModifier(eModifiersExtended.MDF_DRUG);
 		
 		PluginTransmissionAgents m_mta = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
 		m_mta.TransmitAgents(item, player, AGT_ITEM_TO_FLESH);
