@@ -41,6 +41,48 @@ class CfgVehicles
 		itemSize[] = {2,2};																	// Taille de l'item dans l'inventaire - largeur par longueur
         hiddenSelections[] = {"color"};													// Nom de la selection à utiliser dans le modele pour permettre le retexturing
         hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Yellow_co.paa"};					// Chemin vers les colors - utilisé pour permettre le retexturing - là par contre Backslash pas ouf
+
+		class AnimEvents
+		{
+			class SoundWeapon
+			{
+				class BloodBag_start
+				{
+					soundSet = "BloodBag_start_SoundSet";
+					id = 201;
+				};
+				class BloodBag_spear
+				{
+					soundSet = "BloodBag_spear_SoundSet";
+					id = 202;
+				};
+				class BloodBag_loop
+				{
+					soundSet = "BloodBag_loop_SoundSet";
+					id = 203;
+				};
+				class BloodBag_loop2
+				{
+					soundSet = "BloodBag_loop_SoundSet";
+					id = 204;
+				};
+				class BloodBag_end
+				{
+					soundSet = "BloodBag_end_SoundSet";
+					id = 205;
+				};
+				class pickUpItem
+				{
+					soundSet = "pickUpBloodBag_SoundSet";
+					id = 797;
+				};
+				class drop
+				{
+					soundset = "bloodbag_drop_SoundSet";
+					id = 898;
+				};
+			};
+		};
 	};
 
 	class Medkit_AI2_Blue: Medkit_AI2	 									// Classe qu'on va vraiment utiliser du coup. Va etre affiché en jeu - hérite de la Base
