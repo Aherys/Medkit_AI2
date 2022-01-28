@@ -11,35 +11,35 @@ class CfgPatches
 
 class CfgMods
 {
- class WeaponBreakOnDie
- {
-  type = "mod";
+	class WeaponBreakOnDie
+	{
+		type = "mod";
   
-  class defs
-  {
-   class worldScriptModule
-   {
-    value = "";
-    files[] = {"Medkit_AI2/WorldScripts"};
-   };
-  };
- };
+		class defs
+		{
+		   class worldScriptModule
+		   {
+				value = "";
+				files[] = {"Medkit_AI2/WorldScripts"};
+		   };
+		};
+	};
 };
 
 class CfgVehicles 
 {
 	class BandageDressing; 																	// Classe externe issue de gear_medical\DZ\gear\medical\config.cpp
 
-	class Medkit_AI2: BandageDressing 											// Classe de base de ton item - herite de la classe externe BandageDressing parce qu'on va pas tout redefinir. flemme.
+	class Medkit_AI2: BandageDressing 														// Classe de base de ton item - herite de la classe externe BandageDressing parce qu'on va pas tout redefinir. flemme.
 	{
 		scope = 0; 																			// Utilisé par l'editeur - 0=hidden; 1=Zeus; 2=Editor - zeus existe pas dans DayZ, useless.
 		displayName = "Medkit AI-2 (Base)";													// Nom affiché en jeu - stringtable preferable
-		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";										// Chemin vers modele 3D - Backslash important
+		model = "Medkit_AI2\Medkit_AI2_DZ.p3d";												// Chemin vers modele 3D - Backslash important
 		weight = 100;																		// Poids de l'item - joues potentiellement sur le comportement de la physique de l'item si il est lancé
 		descriptionShort = "Small medical box (Base)";										// Desc de l'item affiché en jeu - stringtable preferable
 		varQuantityMax = 5;
 		itemSize[] = {2,2};																	// Taille de l'item dans l'inventaire - largeur par longueur
-        hiddenSelections[] = {"color"};													// Nom de la selection à utiliser dans le modele pour permettre le retexturing
+        hiddenSelections[] = {"color"};														// Nom de la selection à utiliser dans le modele pour permettre le retexturing
         hiddenSelectionsTextures[] = {"Medkit_AI2\data\AI2_Yellow_co.paa"};					// Chemin vers les colors - utilisé pour permettre le retexturing - là par contre Backslash pas ouf
 
 		class AnimEvents
@@ -85,7 +85,7 @@ class CfgVehicles
 		};
 	};
 
-	class Medkit_AI2_Blue: Medkit_AI2	 									// Classe qu'on va vraiment utiliser du coup. Va etre affiché en jeu - hérite de la Base
+	class Medkit_AI2_Blue: Medkit_AI2
 	{
 		scope = 2;
 		displayName = "Medkit AI-2 (Blue)";
