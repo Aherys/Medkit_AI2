@@ -5,5 +5,7 @@ Also adding a new "Drug" Vital constant.
 Now Painkillers, Morphine, Antibiotics (and ofc, AI-2) can lead the player to an Overdose (Blurry vision, Vomit, Fall unconscious... and die).
 The amount of indesirable effect is scalled on the abuse.
 
+Steam : https://steamcommunity.com/sharedfiles/filedetails/?id=2733920723
+
 Dev : Aherys
 3D & 2D : Moonie
