@@ -2,7 +2,7 @@ class ActionHealingSelfCB : ActionContinuousBaseCB
 {
 	override void CreateActionComponent()
 	{
-		m_ActionData.m_ActionComponent = new CAContinuousTime(1.5); // Set the time off the use
+		m_ActionData.m_ActionComponent = new CAContinuousTime(5.5); // Set the time off the use
 	}
 };
 

@@ -1,16 +1,16 @@
 class DrugHeavySymptom extends SymptomBase
 {
-	float tickTimer = 0;
 	
 	//this is just for the Symptom parameters set-up and is called even if the Symptom doesn't execute, don't put any gameplay code in here
 	override void OnInit()
 	{
-		m_SymptomType = SymptomTypes.PRIMARY;
+		m_SymptomType = SymptomTypes.SECONDARY;
 		m_Priority = 1;
 		m_ID = SymptomIDs_Extended.SYMPTOM_DRUG_HEAVY;
 		m_SyncToClient = true;
-		m_MaxCount = 2;
-		m_Duration = 20;
+		m_MaxCount = 1;
+		m_Duration = 0.3;
+		
 	}
 	
 	//!gets called every frame
@@ -21,20 +21,7 @@ class DrugHeavySymptom extends SymptomBase
 
 	override void OnUpdateClient(PlayerBase player, float deltatime)
 	{
-		
-		tickTimer -= deltatime;
-		
-		if (tickTimer <= 0)
-		{
-				Param2<float, float> ParamDDE;
-				ParamDDE.param2 = 50;
-				ParamDDE.param1 = 30;
-				player.SpawnDamageDealtEffect2(ParamDDE);
-				
-				int rand = Math.RandomInt(0,10);
-				
-			tickTimer = 0.6;
-		}
+		player.SpawnDamageDealtEffect2();
 	}
 	
 	override void OnAnimationPlayFailed()
@@ -60,7 +47,7 @@ class DrugHeavySymptom extends SymptomBase
 	//!gets called once on a Symptom which is being activated
 	override void OnGetActivatedClient(PlayerBase player)
 	{
-
+		
 		if (LogManager.IsSymptomLogEnable()) Debug.SymptomLog("n/a", this.ToString(), "n/a", "OnGetActivated", m_Player.ToString());
 	}
 
@@ -74,5 +61,6 @@ class DrugHeavySymptom extends SymptomBase
 	override void OnGetDeactivatedClient(PlayerBase player)
 	{
 		if (LogManager.IsSymptomLogEnable()) Debug.SymptomLog("n/a", this.ToString(), "n/a", "OnGetDeactivated", m_Player.ToString());
+
 	}
 }

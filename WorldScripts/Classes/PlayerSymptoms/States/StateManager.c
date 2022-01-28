@@ -1,5 +1,5 @@
 enum SymptomIDs_Extended : SymptomIDs {
-	SYMPTOM_DRUG_LIGHT,
+	SYMPTOM_DRUG_LIGHT = 240,
 	SYMPTOM_DRUG_HEAVY,
 };
 

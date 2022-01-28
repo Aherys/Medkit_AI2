@@ -27,8 +27,8 @@ class ActionHealingBase: ActionContinuousBase
 	void ApplyHealing( ItemBase item, PlayerBase player )
 	{	
 
-		player.AddHealth("","", player.GetMaxHealth() * 0.15);
-		player.GetStatDrug().Set(player.GetStatDrug().Get() + 30);
+		player.AddHealth("","", player.GetMaxHealth() * 0.20);
+		player.GetStatDrug().Set(player.GetStatDrug().Get() + 25);
 		player.GetModifiersManager().ActivateModifier(eModifiersExtended.MDF_DRUG);
 		
 		PluginTransmissionAgents m_mta = PluginTransmissionAgents.Cast(GetPlugin(PluginTransmissionAgents));
