@@ -4,7 +4,7 @@ modded class ActionFeedPainkillerTablets: ActionForceConsume
 	{
 		super.ApplyModifiers( action_data );
 		
-		action_data.m_Player.GetStatDrug().Set(action_data.m_Player.GetStatDrug().Get() + 25);
+		action_data.m_Player.GetStatDrug().Set(action_data.m_Player.GetStatDrug().Get() + 23);
 		action_data.m_Player.GetModifiersManager().ActivateModifier(eModifiersExtended.MDF_DRUG);
 
 	}

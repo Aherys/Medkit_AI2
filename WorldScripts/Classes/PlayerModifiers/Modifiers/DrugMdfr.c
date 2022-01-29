@@ -1,9 +1,10 @@
 class DrugMdfr : ModifierBase
 {
 	const int ACTIVATION_DELAY = 15;
-	float mTimerLastDebuffProcc = 60;
+	float mTimerLastDebuffProcc = 45;
+	float mTimerLastHitProcc = 25;
 	bool bDrugHeavyHasBeenTrigger = false;
-	bool bHeartAttkHasBeenTrigger = false;
+	bool bDrugLightHasBeenTrigger = false;
 	
 	override void Init()
 	{
@@ -47,7 +48,6 @@ class DrugMdfr : ModifierBase
 
 		if (player.GetStatDrug().GetMin() == player.GetStatDrug().Get())
 		{
-			Print("Desactivate");
 			return true;
 		}
 		else
@@ -60,10 +60,12 @@ class DrugMdfr : ModifierBase
 	{
 		float ActualDrug = player.GetStatDrug().Get();
 		mTimerLastDebuffProcc -= deltaT;
-		Print("Drug "+ ActualDrug +" L"+player.GetStatLevelDrug());
+		mTimerLastHitProcc -= deltaT;
+		
+		// Drug Reduction overtime
 		if (GetAttachedTime() > ACTIVATION_DELAY)
 		{
-			player.GetStatDrug().Set(ActualDrug - (0.5 * deltaT));
+			player.GetStatDrug().Set(ActualDrug - (0.1 * deltaT));
 
 		}
 		
@@ -72,17 +74,28 @@ class DrugMdfr : ModifierBase
 		if (!SyMa)
 			return;
 		
+		// Handeling Hits
+		if (player.GetStatLevelDrug() <= 2 && mTimerLastHitProcc <= 0)
+		{
+			player.DecreaseHealth("", "Shock", ActualDrug / 3);
+			mTimerLastHitProcc = 25;
+		}
 		
+		
+		// Handeling Other Symptom on OD
 		if (player.GetStatLevelDrug() <= 2 && mTimerLastDebuffProcc <= 0)
 		{
 			int Rand = Math.RandomInt(0,5);
 			
 			if (Rand == 0)
+			{
 				SyMa.QueueUpPrimarySymptom(SymptomIDs_Extended.SYMPTOM_VOMIT);
-			else if (Rand == 1 && player.GetStatLevelDrug() == 1)
-				player.SetHealth("", "Shock", 0);
-			else if (Rand == 2)
-				player.SetHealth("", "Shock", 30);
+				player.GetStatDrug().Set(ActualDrug - 10);
+			}
+			else if (Rand == 1 && player.GetStatDrug().Get() >= 80)
+				player.DecreaseHealth("", "Shock", 100);
+			else if (Rand == 2 && player.GetStatDrug().Get() >= 70)
+				player.DecreaseHealth("", "Shock", 40);
 			
 			
 			if (player.GetStatLevelDrug() <= 1)
@@ -91,11 +104,23 @@ class DrugMdfr : ModifierBase
 			}
 			else 
 			{
-				mTimerLastDebuffProcc = 60;
+				mTimerLastDebuffProcc = 45;
 			}
 		}
 		
+		// Light Symptom Trigger
+		if (!bDrugLightHasBeenTrigger)
+		{
+			SyMa.QueueUpSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_LIGHT);
+			bDrugLightHasBeenTrigger = true;
+		}
+		else if (bDrugLightHasBeenTrigger)
+		{
+			SyMa.RemoveSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_LIGHT);
+			bDrugLightHasBeenTrigger = false;
+		}
 
+		// Heavy Symptom Trigger
 		if (player.GetStatLevelDrug() < 2 && !bDrugHeavyHasBeenTrigger)
 		{
 			SyMa.QueueUpSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_HEAVY);
@@ -107,10 +132,11 @@ class DrugMdfr : ModifierBase
 			bDrugHeavyHasBeenTrigger = false;
 		}
 		
-		if (player.GetStatLevelDrug() == 0 && !bHeartAttkHasBeenTrigger)
+		// Heart Attack code
+		if (player.GetStatLevelDrug() == 0)
 		{
-			player.SetHealth("", "", 0);
-			bHeartAttkHasBeenTrigger = true;
+			player.SetHealth("", "Shock", 0);
+			player.DecreaseHealth( "", "Blood", 250 * deltaT );
 		}
 
 	}

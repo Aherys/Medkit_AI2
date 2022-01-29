@@ -1,6 +1,6 @@
 enum EPlayerStatsExtended_v115 : EPlayerStats_v115
 {
-	DRUG = 450,
+	DRUG,
 };
 
 modded class PlayerStatsPCO_v115 extends PlayerStatsPCO_Base

@@ -22,6 +22,7 @@ class DrugHeavySymptom extends SymptomBase
 	override void OnUpdateClient(PlayerBase player, float deltatime)
 	{
 		player.SpawnDamageDealtEffect2();
+
 	}
 	
 	override void OnAnimationPlayFailed()
@@ -47,7 +48,6 @@ class DrugHeavySymptom extends SymptomBase
 	//!gets called once on a Symptom which is being activated
 	override void OnGetActivatedClient(PlayerBase player)
 	{
-		
 		if (LogManager.IsSymptomLogEnable()) Debug.SymptomLog("n/a", this.ToString(), "n/a", "OnGetActivated", m_Player.ToString());
 	}
 

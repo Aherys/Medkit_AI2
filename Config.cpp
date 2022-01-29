@@ -22,6 +22,11 @@ class CfgMods
 				value = "";
 				files[] = {"Medkit_AI2/WorldScripts"};
 		   };
+		   class gameScriptModule
+		   {
+				value = "";
+				files[] = {"Medkit_AI2/GameScripts"};
+		   };
 		};
 	};
 };
