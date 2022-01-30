@@ -5,5 +5,6 @@ modded class ModifiersManager
 	{
 		super.Init();
 		AddModifier(new DrugMdfr);
+		AddModifier(new ChemXMdfr);
 	}
 }

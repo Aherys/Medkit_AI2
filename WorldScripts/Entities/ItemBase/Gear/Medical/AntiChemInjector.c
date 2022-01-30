@@ -4,7 +4,7 @@ modded class AntiChemInjector: Inventory_Base
 	{
 			super.OnApply(player);
 			
-			player.GetStatDrug().Set(0);
 			player.GetModifiersManager().ActivateModifier(eModifiersExtended.MDF_DRUG);
+			player.GetModifiersManager().ActivateModifier(eModifiersExtended.MDF_CHEMX);
 	}
 };
