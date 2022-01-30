@@ -11,7 +11,7 @@ class CfgPatches
 
 class CfgMods
 {
-	class WeaponBreakOnDie
+	class Medkit_AI2
 	{
 		type = "mod";
   

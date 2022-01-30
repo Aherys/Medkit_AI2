@@ -5,6 +5,7 @@ class DrugMdfr : ModifierBase
 	float mTimerLastHitProcc = 25;
 	bool bDrugHeavyHasBeenTrigger = false;
 	bool bDrugLightHasBeenTrigger = false;
+	bool bLastTickBeforeStopModifier = false;
 	
 	override void Init()
 	{
@@ -40,18 +41,26 @@ class DrugMdfr : ModifierBase
 	override void OnDeactivate(PlayerBase player)
 	{
 		
+
 	}
 
 	override bool DeactivateCondition(PlayerBase player)
 	{
 		float attached_time = GetAttachedTime();
 
-		if (player.GetStatDrug().GetMin() == player.GetStatDrug().Get())
+		if (player.GetStatDrug().GetMin() >= player.GetStatDrug().Get() && !bLastTickBeforeStopModifier)
 		{
+			bLastTickBeforeStopModifier = true;
+			return false;
+		}
+		else if (player.GetStatDrug().GetMin() >= player.GetStatDrug().Get() && bLastTickBeforeStopModifier)
+		{
+			bLastTickBeforeStopModifier = false;
 			return true;
 		}
 		else
 		{
+			bLastTickBeforeStopModifier = false;
 			return false;
 		}
 	}
@@ -69,11 +78,6 @@ class DrugMdfr : ModifierBase
 
 		}
 		
-		ref SymptomManager SyMa = player.GetSymptomManager();
-		
-		if (!SyMa)
-			return;
-		
 		// Handeling Hits
 		if (player.GetStatLevelDrug() <= 2 && mTimerLastHitProcc <= 0)
 		{
@@ -89,7 +93,7 @@ class DrugMdfr : ModifierBase
 			
 			if (Rand == 0)
 			{
-				SyMa.QueueUpPrimarySymptom(SymptomIDs_Extended.SYMPTOM_VOMIT);
+				player.GetSymptomManager().QueueUpPrimarySymptom(SymptomIDs_Extended.SYMPTOM_VOMIT);
 				player.GetStatDrug().Set(ActualDrug - 10);
 			}
 			else if (Rand == 1 && player.GetStatDrug().Get() >= 80)
@@ -111,24 +115,24 @@ class DrugMdfr : ModifierBase
 		// Light Symptom Trigger
 		if (!bDrugLightHasBeenTrigger)
 		{
-			SyMa.QueueUpSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_LIGHT);
+			player.GetSymptomManager().QueueUpSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_LIGHT);
 			bDrugLightHasBeenTrigger = true;
 		}
 		else if (bDrugLightHasBeenTrigger)
 		{
-			SyMa.RemoveSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_LIGHT);
+			player.GetSymptomManager().RemoveSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_LIGHT);
 			bDrugLightHasBeenTrigger = false;
 		}
 
 		// Heavy Symptom Trigger
 		if (player.GetStatLevelDrug() < 2 && !bDrugHeavyHasBeenTrigger)
 		{
-			SyMa.QueueUpSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_HEAVY);
+			player.GetSymptomManager().QueueUpSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_HEAVY);
 			bDrugHeavyHasBeenTrigger = true;
 		}
 		else if (bDrugHeavyHasBeenTrigger)
 		{
-			SyMa.RemoveSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_HEAVY);
+			player.GetSymptomManager().RemoveSecondarySymptom(SymptomIDs_Extended.SYMPTOM_DRUG_HEAVY);
 			bDrugHeavyHasBeenTrigger = false;
 		}
 		
@@ -138,6 +142,5 @@ class DrugMdfr : ModifierBase
 			player.SetHealth("", "Shock", 0);
 			player.DecreaseHealth( "", "Blood", 250 * deltaT );
 		}
-
 	}
 };
