@@ -19,8 +19,19 @@ modded class PlayerBase extends ManBase
 	PlayerStat<float> GetStatDrug()
 	{
 		if( !m_StatDrug && GetPlayerStats() )
-		{
-			m_StatDrug = PlayerStat<float>.Cast(GetPlayerStats().GetStatObject(EPlayerStatsExtended_current.DRUG));
+		{			
+			for(int i = 0; i < 2147483646; i++)
+			{
+				m_StatDrug = PlayerStat<float>.Cast(GetPlayerStats().GetStatObject(i));
+				if (m_StatDrug && m_StatDrug.GetLabel())
+				{
+					if (m_StatDrug.GetLabel() == "Drug")
+					{
+						break;
+					}
+				}
+				m_StatDrug = null;
+			}
 		}
 		return m_StatDrug;
 	}

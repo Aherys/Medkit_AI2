@@ -1,20 +1,16 @@
-enum EPlayerStatsExtended_v115 : EPlayerStats_v115
+enum EPlayerStatsExtended_current : EPlayerStats_current
 {
-	DRUG,
+	DRUG = 821344,
 };
 
-modded class PlayerStatsPCO_v115 extends PlayerStatsPCO_Base
+modded class PlayerStatsPCO_current
 {
 
 	override void Init()
 	{
 		super.Init();
 		
-		RegisterStat(EPlayerStatsExtended_v115.DRUG,  	new PlayerStat<float>	(0,	100,								0,								"Drug",		EPSstatsFlags.EMPTY) );
+		RegisterStat(EPlayerStatsExtended_current.DRUG,  	new PlayerStat<float>	(0,	100,								0,								"Drug",		EPSstatsFlags.EMPTY) );
 	}
 };
 
-enum EPlayerStatsExtended_current : EPlayerStatsExtended_v115
-{
-	
-};
